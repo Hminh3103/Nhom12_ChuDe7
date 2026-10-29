@@ -1,0 +1,20 @@
+# Keep only runtime source, sample configuration and setup instructions.
+/*
+!/.gitignore
+!/.htaccess
+!/.env.example
+!/README.md
+!/app/
+!/config/
+!/data/
+!/public/
+!/storage/
+
+# Keep the writable directory, but exclude generated logs and screenshots.
+/storage/*
+!/storage/.gitkeep
+
+# Never commit local credentials, including environment-specific variants.
+.env
+.env.*
+!/.env.example
