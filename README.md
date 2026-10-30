@@ -16,7 +16,7 @@ Yêu cầu PHP **8.0+**, extensions `curl`, `mbstring`, `json`, `openssl` (XAMPP
 
 Mở http://localhost:8000. Có thể dùng `php` thay đường dẫn tuyệt đối nếu đã thêm PHP vào PATH. Chỉ bind localhost; backend từ chối địa chỉ remote. Để dừng, nhấn Ctrl+C.
 
-Với Apache XAMPP: bật `mod_rewrite` và `AllowOverride All`, truy cập http://localhost/BE1/demo-prompt-injection/public/. Tốt nhất đặt DocumentRoot vào `public/`; file `.htaccess` gốc chặn các thư mục nội bộ khi chạy trong htdocs. Không triển khai lab công khai.
+Với Apache XAMPP: bật `mod_rewrite` và `AllowOverride All`, truy cập http://localhost/BE1/demo-prompt-injection/; `.htaccess` tự chuyển sang `public/`. Bạn cũng có thể mở trực tiếp http://localhost/BE1/demo-prompt-injection/public/. Tốt nhất đặt DocumentRoot vào `public/`; file `.htaccess` gốc chặn các thư mục nội bộ khi chạy trong htdocs. Nếu thư mục gốc báo Forbidden, kiểm tra quy tắc chuyển hướng và không bật liệt kê thư mục để khắc phục. Không triển khai lab công khai.
 
 Nếu thiếu key, trang vẫn tải, lần chạy trả `inconclusive` với hướng dẫn cấu hình. Nếu lỗi TLS, cấu hình `curl.cainfo` trong php.ini tới CA bundle hợp lệ; không tắt xác minh chứng chỉ.
 
