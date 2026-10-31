@@ -26,6 +26,14 @@ try {
         }
         if (!str_starts_with(strtolower($_SERVER['CONTENT_TYPE'] ?? ''), 'application/json')) throw new InvalidArgumentException('Cần Content-Type application/json.');
         echo json_encode((new App\Controllers\ChatController)->handle($config), JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+    } elseif ($route === '/sql-injection') {
+        if (!in_array($_SERVER['REQUEST_METHOD'], ['GET', 'POST'], true)) {
+            http_response_code(405);
+            header('Allow: GET, POST');
+            exit('Chỉ hỗ trợ GET và POST.');
+        }
+        header('Content-Type: text/html; charset=utf-8');
+        (new App\Controllers\SqlController)->show($base);
     } elseif (($route === '/' || $route === '/index.php' || $route === '') && $_SERVER['REQUEST_METHOD'] === 'GET') {
         header('Content-Type: text/html; charset=utf-8');
         (new App\Controllers\HomeController)->show($config, $base);

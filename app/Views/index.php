@@ -11,6 +11,7 @@
 
 <body data-base="<?= htmlspecialchars($base) ?>">
     <header><a class="brand" href="<?= htmlspecialchars($base) ?>/"><span class="brand-icon" aria-hidden="true">M</span> MINI ATS <span class="divider">/</span> <span>Security Lab</span></a><span class="local">● LOCAL DEMO</span></header>
+    <?php require __DIR__ . '/nav.php'; ?>
     <main>
         <div class="intro">
             <div>

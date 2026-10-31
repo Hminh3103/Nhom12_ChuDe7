@@ -1,6 +1,15 @@
 # Mini ATS AI Security Lab
 
-Website PHP MVC một trang để trình diễn Direct và Indirect Prompt Injection. Dữ liệu tuyển dụng giả, không database, không tools, không thư viện ngoài. Backend gọi NVIDIA NIM thật; không có chế độ giả kết quả.
+Website PHP MVC để trình diễn Direct / Indirect Prompt Injection và SQL Injection – Bypass Login, chuyển trang qua thanh điều hướng. Dữ liệu giả, không thư viện ngoài. Prompt Injection gọi NVIDIA NIM thật; SQL Injection chạy SQL thật trên SQLite trong bộ nhớ.
+
+## SQL Injection – Bypass Login
+
+Mở `/sql-injection` hoặc chọn **SQL Injection** trên thanh điều hướng. Cần extension `pdo_sqlite` (XAMPP hiện tại đã có), không cần API key hoặc MySQL.
+
+- Đối chứng: `admin` / `DemoAdmin123!` thành công ở cả hai chế độ; `admin` / `sai-mat-khau` thất bại.
+- Bypass: nhập tên đăng nhập `admin' -- ` và mật khẩu `bat-ky`. **Không được bảo vệ** đăng nhập được do ghép chuỗi SQL; **Được bảo vệ** thất bại do bind tham số.
+- Trang hiển thị kết quả và truy vấn thực tế. Đổi chế độ rồi gửi lại cùng input để so sánh.
+- Database chỉ chứa tài khoản giả, tạo mới mỗi lượt và chỉ đọc khi thực thi input. Không tạo phiên đăng nhập hoặc cấp quyền thật. Mật khẩu plaintext chỉ là fixture cho bài học SQL Injection, không phải mẫu xác thực production.
 
 ## Chạy local
 
